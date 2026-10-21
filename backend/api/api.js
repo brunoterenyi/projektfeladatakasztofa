@@ -6,6 +6,7 @@ const fs = require('fs/promises');
 //!Multer
 const multer = require('multer'); //?npm install multer
 const path = require('path');
+const { request } = require('http');
 
 const storage = multer.diskStorage({
     destination: (request, file, callback) => {
@@ -40,5 +41,34 @@ router.get('/testsql', async (request, response) => {
         });
     }
 });
+
+let szavak = [];
+let megfejtes = '';
+let tippek = [];
+let hibak = 0;
+const maxHiba = 6;
+
+router.get('/words', (request, response) => {
+    response.status(200).json(szavak);
+});
+
+router.post('/words', (request, response) => {
+    const szo = request.body.word.trim().toUpperCase();
+
+    if (szo === '') {
+        message: 'A szó nem lehet üres.';
+    }
+    if (szavak.includes(szo)) {
+        message: 'Ez a szó már létezik.';
+    }
+
+    szavak.push(szo);
+    response.status(200).json({
+        message: 'A szó hozzáadva.',
+        words: szavak
+    });
+});
+
+router.postÍÍ('/game/new', (request, response));
 
 module.exports = router;
