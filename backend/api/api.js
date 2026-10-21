@@ -71,6 +71,18 @@ router.post('/words', (request, response) => {
 router.delete('/words/:word', (request, response) => {
     const szo = request.word.toUpperCase();
     const index = szavak.indexOf(szo);
+
+    if (index === -1) {
+        return response.status(404).json({
+            message: 'Ez a szó nem található'
+        });
+    }
+});
+
+szavak.splice(index, 1);
+
+response.status(200).json({
+    message: 'Ez a szó nem található'
 });
 
 router.post('/game/new', (request, response) => {
