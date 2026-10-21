@@ -92,6 +92,29 @@ router.post('/game/new', (request, response) => {
             message: 'Nincs szó a játékhoz!'
         });
     }
+    const index = Math.floor(Math.random() * szavak.length);
+
+    megfejtes = szavak[index];
+    tippek = [];
+    hibak = 0;
+
+    response.status(200).json({
+        message: 'Új játék!',
+        szohossz: megfejtes.length,
+        talaltbetuk: tippek,
+        mistakes: hibak,
+        maxMistakes: maxHiba,
+        status: 'playing'
+    });
+});
+
+router.post('/game/guess', (request, response) => {
+    if (megfejtes === '') {
+        return response.status(400).json({
+            message: 'Először indíts új játékot'
+        });
+    }
+    const betu = '';
 });
 
 module.exports = router;
