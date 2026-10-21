@@ -68,6 +68,10 @@ router.post('/words', (request, response) => {
         words: szavak
     });
 });
+router.delete('/words/:word', (request, response) => {
+    const szo = request.word.toUpperCase();
+    const index = szavak.indexOf(szo);
+});
 
 router.post('/game/new', (request, response) => {
     if (szavak.length === 0) {
