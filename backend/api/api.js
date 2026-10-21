@@ -82,7 +82,8 @@ router.delete('/words/:word', (request, response) => {
 szavak.splice(index, 1);
 
 response.status(200).json({
-    message: 'Ez a szó nem található'
+    message: 'Szó törölve',
+    words: szavak
 });
 
 router.post('/game/new', (request, response) => {
