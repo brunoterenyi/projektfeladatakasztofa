@@ -69,6 +69,12 @@ router.post('/words', (request, response) => {
     });
 });
 
-router.postÍÍ('/game/new', (request, response));
+router.post('/game/new', (request, response) => {
+    if (szavak.length === 0) {
+        return response.status(400).json({
+            message: 'Nincs szó a játékhoz!'
+        });
+    }
+});
 
 module.exports = router;
