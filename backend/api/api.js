@@ -68,7 +68,7 @@ router.post('/words', (request, response) => {
         words: szavak
     });
 });
-router.delete('/words/:word', (request, response) => {
+router.post('/words/:word', (request, response) => {
     const szo = request.word.toUpperCase();
     const index = szavak.indexOf(szo);
 
