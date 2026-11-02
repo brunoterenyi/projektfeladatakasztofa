@@ -107,6 +107,66 @@ router.post('/game/new', (request, response) => {
         maxMistakes: maxHiba,
         status: 'playing'
     });
-});
 
-module.exports = router;
+    router.post('/game/guess', (request, response) => {
+        if (kitalalandoSzo === '') {
+            return response.status(400).json({
+                message: 'Először indíts új játékot'
+            });
+        }
+
+        const betu = request.body.letter.toUpperCase();
+
+        if (tippek.includes(betu)) {
+            return response.status(400).json({
+                message: 'Ezt a betűt már tippelted'
+            });
+        }
+
+        if (hibak >= maxHiba || kitalalandoSzo.split('').every((b) => tippek.includes(b))) {
+            return response.status(400).json({
+                message: 'A játék már véget ért'
+            });
+        }
+
+        tippek.push(betu);
+
+        if (!kitalalandoSzo.includes(betu)) {
+            hibak++;
+        }
+
+        let megjelenitettSzo = '';
+
+        for (let i = 0; i < kitalalandoSzo.length; i++) {
+            if (tippek.includes(kitalalandoSzo[i])) {
+                megjelenitettSzo += kitalalandoSzo[i];
+            } else {
+                megjelenitettSzo += '_';
+            }
+        }
+        let status = 'playing';
+
+        if (!megjelenitettSzo.includes('_')) {
+            status = 'won';
+        } else if (hibak >= maxHiba) {
+            status = 'lost';
+        }
+
+        response.status(200).json({
+            word: megjelenitettSzo,
+            kitalaltBetuk: tippek,
+            mistakes: hibak,
+            maxMistakes: maxHiba,
+            status: status,
+            message:
+                status === 'won'
+                    ? 'Gratulálok, nyertél!'
+                    : status === 'lost'
+                      ? 'Vesztettél!'
+                      : 'Tippelj újra!'
+        })-.oif5 4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d;
+    });
++
++-});
+
+u89mj modAÍSule.exports = router;
