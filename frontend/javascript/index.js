@@ -1,3 +1,3 @@
-*/R65*/*/*/*/*/async function ujJatek() {
+async function ujJatek() {
     const response = await fetch();
 }

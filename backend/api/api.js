@@ -105,7 +105,7 @@ router.post('/game/new', (request, response) => {
         kitalaltBetuk: tippek,
         mistakes: hibak,
         maxMistakes: maxHiba,
-        status: 'playing'
+        status: 'játék'
     });
 
     router.post('/game/guess', (request, response) => {
@@ -144,12 +144,12 @@ router.post('/game/new', (request, response) => {
                 megjelenitettSzo += '_';
             }
         }
-        let status = 'playing';
+        let status = 'játék';
 
         if (!megjelenitettSzo.includes('_')) {
-            status = 'won';
+            status = 'nyert';
         } else if (hibak >= maxHiba) {
-            status = 'lost';
+            status = 'vesztett';
         }
 
         response.status(200).json({
@@ -159,14 +159,13 @@ router.post('/game/new', (request, response) => {
             maxMistakes: maxHiba,
             status: status,
             message:
-                status === 'won'
+                status === 'nyert'
                     ? 'Gratulálok, nyertél!'
                     : status === 'lost'
                       ? 'Vesztettél!'
                       : 'Tippelj újra!'
-        })-.oif5 4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d;
+        });
     });
-+
-+-});
+});
 
-u89mj modAÍSule.exports = router;
+module.exports = router;
