@@ -1,31 +1,29 @@
 <!doctype html>
 <html lang="hu">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Akasztófa - játék</title>
-    </head>
-    <body class="bg-light">
-        <div class="content py-4 text-center">
-            <h1>Akasztófa</h1>
-            <a href="index.html" class="btn btn-secondary mb-4">Vissza a főoldalra</a>
-            <div class="card mx-auto p-4" style="max-width: 600px">
-                <h2 id="word" class="my-3"></h2>
-                <p id="mistakes">Hibák: 0/6</p>
-                <div class="input-group mb-3">
-                    <input
-                        id="letter"
-                        class="form-control"
-                        maxlength="1"
-                        placeholder="Tippelj egy betűt"
-                    />
-                    <button id="guessButton" class="btn btn-primary">Tippelés</button>
-                </div>
-                <p id="message"></p>
-                <p id="guessedLetters">Tippek: -</p>
-                <button id="newGame" class="btn btn-success">Új játék</button>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akasztófa - játék</title>
+</head>
+
+<body class="bg-light">
+    <div class="content py-4 text-center">
+        <h1>Akasztófa</h1>
+        <a href="index.html" class="btn btn-secondary mb-4">Vissza a főoldalra</a>
+        <div class="card mx-auto p-4" style="max-width: 600px">
+            <h2 id="word" class="my-3"></h2>
+            <p id="mistakes">Hibák: 0/6</p>
+            <div class="input-group mb-3">
+                <input id="letter" class="form-control" maxlength="1" placeholder="Tippelj egy betűt" />
+                <button id="guessButton" class="btn btn-primary">Tippelés</button>
             </div>
+            <p id="message"></p>
+            <p id="guessedLetters">Tippek: -</p>
+            <button id="newGame" class="btn btn-success">Új játék</button>
         </div>
-        <script src="javascript/game.js"></script>
-    </body>
+    </div>
+    <script src="javascript/game.js"></script>
+</body>
+
 </html>
